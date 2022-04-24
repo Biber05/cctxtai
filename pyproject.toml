@@ -6,6 +6,7 @@ authors = ["Philipp Wolters <philipp.wolters@codecentric.de>"]
 
 [tool.poetry.dependencies]
 python = "3.8"
+txtai = "^4.4.0"
 
 [tool.poetry.dev-dependencies]
 

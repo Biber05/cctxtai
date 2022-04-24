@@ -1,0 +1,2 @@
+def embedding(data):
+    pass

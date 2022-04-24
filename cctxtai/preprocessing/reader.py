@@ -1,8 +1,9 @@
+import json
 from dataclasses import dataclass
 
 from dataclasses_json import DataClassJsonMixin
 
-from cctxtai.utils import create_logger
+from cctxtai.utils import create_logger, timer
 
 DATA_LOG = create_logger("data", "DEBUG")
 
@@ -31,6 +32,9 @@ class LegalData(DataClassJsonMixin):
     ecli: str
     content: str
 
+    def __str__(self):
+        return f"{self.id} - {self.court.name}"
+
 
 class DataGenerator:
     def __init__(self, source_file_path: str):
@@ -42,17 +46,28 @@ class DataGenerator:
             self._path = path
 
     def __call__(self, *args, **kwargs) -> [LegalData]:
-        json_data = self._read_json(self._path.__str__())
-        DATA_LOG.debug(f"Found JSON data from length: {len(json_data)}")
-        data = [self._to_model(json_data)]
+        max_lines = -1 if "max_lines" not in kwargs.keys() else kwargs.get("max_lines")
+
+        json_data = self._read_json(self._path.__str__(), max_lines=max_lines)
+        DATA_LOG.debug(f"Found {len(json_data)} JSON objects in {self._path}")
+
+        data = []
+        for x in json_data:
+            data.append(self._to_model(x))
+
         DATA_LOG.debug(f"Transformed {len(data)} JSON to {LegalData.__name__}")
         return data
 
     @staticmethod
-    def _read_json(filename: str) -> str:
-        import json
+    @timer
+    def _read_json(filename: str, max_lines: int = -1) -> [str]:
+        data = []
         with open(filename, 'r') as f:
-            return json.load(f)
+            lines = f.readlines()
+            max_lines = max_lines if max_lines != -1 else len(lines)
+            for line in lines[:max_lines]:
+                data.append(json.loads(line))
+        return data
 
     @staticmethod
     def _to_model(json_data: str) -> LegalData:

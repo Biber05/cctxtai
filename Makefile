@@ -8,3 +8,6 @@ run_test:
 
 run:
 	python -m cctxtai.runner "/Users/philipp/git/cctxtai/data/00_raw/2019-02-19_oldp_cases.json" 100
+
+run_all:
+	python -m cctxtai.runner "/Users/philipp/git/cctxtai/data/00_raw/2019-02-19_oldp_cases.json"

@@ -2,6 +2,7 @@ import click
 
 from cctxtai.preprocessing.reader import DataGenerator
 from cctxtai.preprocessing.transform import transform
+from cctxtai.preprocessing.writer import write_to_parquet
 from cctxtai.utils import create_logger
 
 
@@ -19,7 +20,9 @@ def run(filename: str, max_lines: int):
         log.error(e)
 
     result = transform(data)
-
+    filename = filename.replace("00_raw", "10_transformed")
+    filename = filename.replace("json", "parquet")
+    write_to_parquet(result, filename)
 
 
 if __name__ == '__main__':

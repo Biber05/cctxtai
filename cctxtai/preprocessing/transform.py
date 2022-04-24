@@ -12,7 +12,7 @@ class OutputLegalData:
     content: str
 
 
-def transform(data: [LegalData]) -> [OutputLegalData]:
+def transform(data: [LegalData]) -> [dict]:
     return [OutputLegalData(
         id=x.id,
         slug=x.slug,

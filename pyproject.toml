@@ -11,6 +11,7 @@ click = "^8.1.2"
 PyYAML = "^6.0"
 fastparquet = "^0.8.1"
 dataclasses-json = "^0.5.7"
+html2text = "^2020.1.16"
 
 [tool.poetry.dev-dependencies]
 

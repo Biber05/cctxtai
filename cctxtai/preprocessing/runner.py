@@ -1,5 +1,6 @@
-import click
+from pathlib import Path
 
+import click
 from cctxtai.preprocessing import PREPROCESSING_LOG
 from cctxtai.preprocessing._reader import DataGenerator
 from cctxtai.preprocessing._transform import transform
@@ -21,8 +22,9 @@ def run(filename: str, max_lines: int):
     result = transform(data)
     filename = filename.replace("00_raw", "10_transformed")
     filename = filename.replace("json", "parquet")
-    write_to_parquet(result, filename)
+    texts = [x.content for x in result]
 
+    write_to_parquet(result, filename)
 
 if __name__ == '__main__':
     run()

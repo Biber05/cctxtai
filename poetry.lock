@@ -129,6 +129,14 @@ ssh = ["paramiko"]
 tqdm = ["tqdm"]
 
 [[package]]
+name = "html2text"
+version = "2020.1.16"
+description = "Turn HTML into equivalent Markdown-structured text."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "huggingface-hub"
 version = "0.5.1"
 description = "Client library to download and publish models on the huggingface.co hub"
@@ -494,7 +502,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "3.8"
-content-hash = "46369e6d210eb3ebd858c051ca8285594f7bf53f2fe913ed86d24079e487cea6"
+content-hash = "3784bb462d6e808f8b3a93512bd096fc0ee4d801ddcf053965c336f10c4bae3e"
 
 [metadata.files]
 certifi = [
@@ -644,6 +652,10 @@ filelock = [
 fsspec = [
     {file = "fsspec-2022.3.0-py3-none-any.whl", hash = "sha256:a53491b003210fce6911dd8f2d37e20c41a27ce52a655eef11b885d1578ed4cf"},
     {file = "fsspec-2022.3.0.tar.gz", hash = "sha256:fd582cc4aa0db5968bad9317cae513450eddd08b2193c4428d9349265a995523"},
+]
+html2text = [
+    {file = "html2text-2020.1.16-py3-none-any.whl", hash = "sha256:c7c629882da0cf377d66f073329ccf34a12ed2adf0169b9285ae4e63ef54c82b"},
+    {file = "html2text-2020.1.16.tar.gz", hash = "sha256:e296318e16b059ddb97f7a8a1d6a5c1d7af4544049a01e261731d2d5cc277bbb"},
 ]
 huggingface-hub = [
     {file = "huggingface_hub-0.5.1-py3-none-any.whl", hash = "sha256:b9fd1f567a3fb16e73acc613e78d075d1926d4b0c5c56ba08c4f125707b50c70"},

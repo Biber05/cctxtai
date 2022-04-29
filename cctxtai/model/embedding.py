@@ -15,14 +15,3 @@ def load_embedding(filename: str):
     embeddings = Embeddings()
     embeddings.load(filename)
     return embeddings
-
-
-if __name__ == '__main__':
-    with open("/Users/philipp/git/cctxtai/data/_test/wikipedia.txt", "r") as file:
-        lines = []
-        for line in file.readlines():
-            lines.append(line)
-    e = create_embedding(lines[0:1_000])
-    save_embedding(e, "/Users/philipp/git/cctxtai/data/20_embeddings/wikipedia")
-    # result = e.search("Republic", 1)
-    # print(result)

@@ -12,16 +12,10 @@ def run():
     chapters_lookup['Title'] = chapters_lookup['Title'].str.upper()
     chapters_lookup["Title"] = chapters_lookup["Title"].apply(lambda x: x + " \n")
 
-    print(chapters_lookup.head())
-
     books = list(RAW_DIR.glob("*.txt"))
     books.sort()
 
     for book_idx, book in enumerate(books):
-        print(f"Book: {book}")
-        # chapter_names = list(chapters_lookup.loc[chapters_lookup["Book"] == book_idx + 1]["Title"])
-        # chapter_names = list(map(lambda x: x + " \n", chapter_names))
-        # print(f"Chapter_Names: {chapter_names}")
         with open(RAW_DIR.joinpath(book).__str__(), "r") as file:
             lines = file.readlines()
 
@@ -32,12 +26,9 @@ def run():
 
 
 def _split_into_chapters(lines: [str], chapters_lookup: pd.DataFrame) -> Dict[AnyStr, List[AnyStr]]:
-    print(f"#Lines: {len(lines)}")
     lines = list(filter(lambda x: x != "\n", lines))
-    print(f"#Lines after carriage return filter: {len(lines)}")
     lines = list(filter(lambda x: "Page | " not in x, lines))
-    print(f"#Lines after removing page indicators: {len(lines)}")
-
+    
     result: Dict[AnyStr, List[AnyStr]] = dict()
     current_chapter = ""
 

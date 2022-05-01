@@ -9,7 +9,7 @@ def run():
         with open(file, "r") as f:
             data[file.name] = f.read()
     embedding = create_embedding(data)
-    save_embedding(embedding, TRANFORMED_DIR.parent.joinpath("20_embeddings").joinpath("harry_potter"))
+    save_embedding(embedding, TRANFORMED_DIR.parent.joinpath("20_embeddings").joinpath("harry_potter").__str__())
 
 
 if __name__ == '__main__':

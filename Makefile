@@ -9,5 +9,8 @@ run_test:
 run:
 	python -m cctxtai.preprocessing.runner "/Users/philipp/git/cctxtai/data/00_raw/2019-02-19_oldp_cases.json" 100
 
-search:
-	python -m cctxtai.search "openlegal"
+search_legal:
+	python -m cctxtai.search "openlegal" "Ablehnung Prozesskostenhilfe"
+
+search_hp:
+	python -m cctxtai.search "harry_potter" "Dumbledore Dead" 10

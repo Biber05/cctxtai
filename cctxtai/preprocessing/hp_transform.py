@@ -35,7 +35,7 @@ def _split_into_chapters(lines: [str], chapters_lookup: pd.DataFrame) -> Dict[An
     for i, line in enumerate(lines):
         if line in chapters_lookup["Title"].tolist():
             chapter = list(chapters_lookup.loc[chapters_lookup["Title"] == line].values)[0]
-            current_chapter = f"{chapter[0]}_{chapter[1]}"
+            current_chapter = f"{chapter[0]}{chapter[1]}"
             result[current_chapter] = [chapter[2]]
         elif current_chapter != "":
             result[current_chapter].append(line)
